@@ -677,6 +677,7 @@
             </view>
             <connections>
                 <outlet property="goalTextMenuItem" destination="B5w-rB-6eK" id="N3E-4x-EB1"/>
+                <outlet property="pauseMenuItem" destination="AAM-PQ-cCT" id="tK7-ES-d1F"/>
                 <outlet property="resetMenuItem" destination="h5n-px-wxm" id="KNg-sm-C5G"/>
                 <outlet property="startMenuItem" destination="d0R-Zk-93h" id="DTM-0B-U8B"/>
                 <outlet property="stopMenuItem" destination="aHS-7i-9XG" id="Da2-gc-iuo"/>
@@ -703,6 +704,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="startTimer:" target="QvC-M9-y7g" id="gKV-KT-a3m"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Pause" hidden="YES" id="AAM-PQ-cCT">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="pauseTimer:" target="QvC-M9-y7g" id="xp3-Xu-gv0"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Stop" hidden="YES" id="aHS-7i-9XG">
