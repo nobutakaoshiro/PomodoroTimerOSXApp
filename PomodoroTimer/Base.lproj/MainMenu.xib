@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6157" systemVersion="14A237a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6157"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6206.8"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -10,9 +10,10 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target">
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PomodoroTimer" customModuleProvider="target">
             <connections>
+                <outlet property="statusBarMenu" destination="0I2-dt-Oie" id="yXj-QY-9sp"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -666,15 +667,51 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="PomodoroTimer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+        <window title="PomodoroTimer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" showsToolbarButton="NO" animationBehavior="default" id="QvC-M9-y7g" userLabel="PomodoroTimerWindow" customClass="PomodoroTimerWindow" customModule="PomodoroTimer" customModuleProvider="target">
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
+            <rect key="contentRect" x="0.0" y="800" width="1650" height="22"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1650" height="1028"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="1650" height="22"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
+            <connections>
+                <outlet property="view" destination="EiT-Mj-1SZ" id="i1W-6g-zy3"/>
+            </connections>
+            <point key="canvasLocation" x="146" y="448.5"/>
         </window>
+        <menu title="StatusBar Menu" id="0I2-dt-Oie">
+            <items>
+                <menuItem title="5:05 / 25:00 (20%)" hidden="YES" id="n80-Uo-dLk">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="sj7-Y5-36e"/>
+                <menuItem title="Goal:" enabled="NO" id="FSq-bj-28J">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="&quot;The Goal is ...&quot;" enabled="NO" id="B5w-rB-6eK">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="uyS-B7-ACU"/>
+                <menuItem title="Start" id="d0R-Zk-93h">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Reset" id="h5n-px-wxm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="eLc-nO-PRI"/>
+                <menuItem title="Set Goal" id="hGC-Ov-hrV">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="CRf-3x-XAb"/>
+                <menuItem title="Quit" id="fkG-cK-CuH">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-1" id="Uyo-c5-CGg"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-183" y="678.5"/>
+        </menu>
     </objects>
 </document>

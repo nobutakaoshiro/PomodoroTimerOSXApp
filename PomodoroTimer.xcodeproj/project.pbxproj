@@ -12,6 +12,8 @@
 		8B7A792E19ADAC6B0025E147 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A792D19ADAC6B0025E147 /* Images.xcassets */; };
 		8B7A793119ADAC6B0025E147 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A792F19ADAC6B0025E147 /* MainMenu.xib */; };
 		8B7A793D19ADAC6B0025E147 /* PomodoroTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A793C19ADAC6B0025E147 /* PomodoroTimerTests.swift */; };
+		8B7A797D19AE09D70025E147 /* PomodoroTimerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A797C19AE09D70025E147 /* PomodoroTimerWindow.swift */; };
+		F22F2C50D0684440BDB91706 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F80E8C082AB4DB7B8239A68 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0CF75216115E4D069DEAD0C6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		1F80E8C082AB4DB7B8239A68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B5E0C0119AEEB0E00AFD8B5 /* PomodoroTimer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PomodoroTimer-Bridging-Header.h"; sourceTree = "<group>"; };
 		8B7A792419ADAC6B0025E147 /* PomodoroTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodoroTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A792819ADAC6B0025E147 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B7A792919ADAC6B0025E147 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -34,6 +39,8 @@
 		8B7A793619ADAC6B0025E147 /* PomodoroTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomodoroTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A793B19ADAC6B0025E147 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B7A793C19ADAC6B0025E147 /* PomodoroTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroTimerTests.swift; sourceTree = "<group>"; };
+		8B7A794819AE00A50025E147 /* PomodoroTimer.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PomodoroTimer.playground; sourceTree = "<group>"; };
+		8B7A797C19AE09D70025E147 /* PomodoroTimerWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroTimerWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F22F2C50D0684440BDB91706 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,12 +62,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68D570C393804D77B8A25FDF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F80E8C082AB4DB7B8239A68 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8B7A791B19ADAC6B0025E147 = {
 			isa = PBXGroup;
 			children = (
+				8B7A794819AE00A50025E147 /* PomodoroTimer.playground */,
 				8B7A792619ADAC6B0025E147 /* PomodoroTimer */,
 				8B7A793919ADAC6B0025E147 /* PomodoroTimerTests */,
 				8B7A792519ADAC6B0025E147 /* Products */,
+				0CF75216115E4D069DEAD0C6 /* Pods.xcconfig */,
+				68D570C393804D77B8A25FDF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,9 +95,12 @@
 			isa = PBXGroup;
 			children = (
 				8B7A792B19ADAC6B0025E147 /* AppDelegate.swift */,
+				8B7A794919AE020C0025E147 /* Models */,
 				8B7A792D19ADAC6B0025E147 /* Images.xcassets */,
 				8B7A792F19ADAC6B0025E147 /* MainMenu.xib */,
+				8B7A797C19AE09D70025E147 /* PomodoroTimerWindow.swift */,
 				8B7A792719ADAC6B0025E147 /* Supporting Files */,
+				8B5E0C0119AEEB0E00AFD8B5 /* PomodoroTimer-Bridging-Header.h */,
 			);
 			path = PomodoroTimer;
 			sourceTree = "<group>";
@@ -109,6 +131,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8B7A794919AE020C0025E147 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B7A794019ADAC6B0025E147 /* Build configuration list for PBXNativeTarget "PomodoroTimer" */;
 			buildPhases = (
+				7A67AAFA0A634B1FBFD524F2 /* Check Pods Manifest.lock */,
 				8B7A792019ADAC6B0025E147 /* Sources */,
 				8B7A792119ADAC6B0025E147 /* Frameworks */,
 				8B7A792219ADAC6B0025E147 /* Resources */,
+				722C4CAE851F46CA80E3C94E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,11 +234,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		722C4CAE851F46CA80E3C94E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A67AAFA0A634B1FBFD524F2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8B7A792019ADAC6B0025E147 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7A797D19AE09D70025E147 /* PomodoroTimerWindow.swift in Sources */,
 				8B7A792C19ADAC6B0025E147 /* AppDelegate.swift in Sources */,
 				8B7A792A19ADAC6B0025E147 /* main.swift in Sources */,
 			);
@@ -322,23 +387,30 @@
 		};
 		8B7A794119ADAC6B0025E147 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CF75216115E4D069DEAD0C6 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PomodoroTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PomodoroTimer/PomodoroTimer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		8B7A794219ADAC6B0025E147 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CF75216115E4D069DEAD0C6 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PomodoroTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PomodoroTimer/PomodoroTimer-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -397,6 +469,7 @@
 				8B7A794219ADAC6B0025E147 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B7A794319ADAC6B0025E147 /* Build configuration list for PBXNativeTarget "PomodoroTimerTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +478,7 @@
 				8B7A794519ADAC6B0025E147 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
