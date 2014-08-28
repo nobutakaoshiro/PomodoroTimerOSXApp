@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func setupStatusBarItem() {
-        let systemStatusBar = NSStatusBar.systemStatusBar()
+        var systemStatusBar = NSStatusBar.systemStatusBar()
 //        let statusBarItemLength = NSVariableStatusItemLength
         mStatusBarItem = systemStatusBar.statusItemWithLength(-1) // -1 means "NSVariableStatusItemLength"
         mStatusBarItem.highlightMode = true

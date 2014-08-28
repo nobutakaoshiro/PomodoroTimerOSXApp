@@ -7,6 +7,5 @@
 //
 
 import Cocoa
-import Foundation
 
 NSApplicationMain(C_ARGC, C_ARGV)

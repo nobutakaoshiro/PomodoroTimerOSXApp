@@ -676,6 +676,12 @@
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <connections>
+                <outlet property="goalTextMenuItem" destination="B5w-rB-6eK" id="N3E-4x-EB1"/>
+                <outlet property="resetMenuItem" destination="h5n-px-wxm" id="KNg-sm-C5G"/>
+                <outlet property="startMenuItem" destination="d0R-Zk-93h" id="DTM-0B-U8B"/>
+                <outlet property="stopMenuItem" destination="aHS-7i-9XG" id="Da2-gc-iuo"/>
+                <outlet property="timerSeparatorMenuItem" destination="sj7-Y5-36e" id="eI4-Qd-I6y"/>
+                <outlet property="timerTextMenuItem" destination="n80-Uo-dLk" id="sJN-tD-wZK"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="i1W-6g-zy3"/>
             </connections>
             <point key="canvasLocation" x="146" y="448.5"/>
@@ -685,7 +691,7 @@
                 <menuItem title="5:05 / 25:00 (20%)" hidden="YES" id="n80-Uo-dLk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="sj7-Y5-36e"/>
+                <menuItem isSeparatorItem="YES" hidden="YES" id="sj7-Y5-36e"/>
                 <menuItem title="Goal:" enabled="NO" id="FSq-bj-28J">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
@@ -695,13 +701,28 @@
                 <menuItem isSeparatorItem="YES" id="uyS-B7-ACU"/>
                 <menuItem title="Start" id="d0R-Zk-93h">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="startTimer:" target="QvC-M9-y7g" id="gKV-KT-a3m"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Stop" hidden="YES" id="aHS-7i-9XG">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="stopTimer:" target="QvC-M9-y7g" id="BCd-7E-23G"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Reset" id="h5n-px-wxm">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="resetTimer:" target="QvC-M9-y7g" id="wNo-SW-Jf2"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="eLc-nO-PRI"/>
                 <menuItem title="Set Goal" id="hGC-Ov-hrV">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="setGoal:" target="QvC-M9-y7g" id="nog-1g-pvK"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="CRf-3x-XAb"/>
                 <menuItem title="Quit" id="fkG-cK-CuH">
