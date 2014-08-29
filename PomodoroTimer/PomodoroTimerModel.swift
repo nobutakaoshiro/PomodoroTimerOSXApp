@@ -11,6 +11,13 @@ import Cocoa
 @objc(PomodoroTimerModel)
 class PomodoroTimerModel: NSObject {
     
+    class var sharedInstance: PomodoroTimerModel {
+        struct Singleton {
+            static let instance : PomodoroTimerModel = PomodoroTimerModel()
+        }
+        return Singleton.instance
+    }
+    
     var timerProgress: Double = 0.0
     var timerMaxCount: Double = 60.0 // 1500 seconds = 25 minutes
     var reverseTimerMaxCount: Double = 20.0 // 300 seconds = 5 minitues

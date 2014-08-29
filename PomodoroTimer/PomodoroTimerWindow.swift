@@ -64,7 +64,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        _pomodoroTimerModel = PomodoroTimerModel()
+        _pomodoroTimerModel = PomodoroTimerModel.sharedInstance
         
         setupView()
         initializeTimer()
