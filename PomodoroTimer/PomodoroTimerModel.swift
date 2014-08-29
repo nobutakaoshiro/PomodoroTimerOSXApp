@@ -8,6 +8,7 @@
 
 import Cocoa
 
+@objc(PomodoroTimerModel)
 class PomodoroTimerModel: NSObject {
     
     var timerProgress: Double = 0.0
@@ -38,7 +39,28 @@ class PomodoroTimerModel: NSObject {
         }
     }
     
+    var timeString: NSString {
+        get {
+            var time = Int(timerProgress)
+            
+            var seconds = time % 60
+            var minutes = (time / 60) % 60
+            return NSString(format: "%02d:%02d", minutes, seconds)
+        }
+    }
+    
+    var remainingTimeString: NSString {
+        get {
+            var time = Int(timerProgress)
+            var remainingTime = Int(maxCount) - time
+            var seconds = remainingTime % 60
+            var minutes = (remainingTime / 60) % 60
+            return NSString(format: "%02d:%02d", minutes, seconds)
+        }
+    }
+    
     func countUp() {
         timerProgress += countInterval
     }
+    
 }

@@ -110,7 +110,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
         
         // Count Up (or Count Down) Timer
         _pomodoroTimerModel.countUp()
-        
+        updateTimerText()
 
         if (timerProgress >= maxCount) {
             if (isReverse) {
@@ -168,6 +168,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     
     @IBAction func setGoal(sender: AnyObject) {
         println("setGoal!")
+        setGoal("ゴールを設定！")
     }
     
     func initializeTimer() {
@@ -197,6 +198,8 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
         pauseTimer()
         stopMenuItem.hidden = true
         resetMenuItem.hidden = true
+        timerTextMenuItem.hidden = true
+        timerSeparatorMenuItem.hidden = true
     }
     
     func resetTimer() {
@@ -216,8 +219,6 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
             
             pauseMenuItem.hidden = true
             startMenuItem.hidden = false
-            timerTextMenuItem.hidden = true
-            timerSeparatorMenuItem.hidden = true
         }
         _timer = nil
     }
@@ -251,5 +252,13 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
         
         println("sended Notification!")
         
+    }
+    
+    func setGoal(goalString: NSString) {
+        goalTextMenuItem.title = goalString
+    }
+    
+    func updateTimerText() {
+        timerTextMenuItem.title = "Remaining: \(_pomodoroTimerModel.remainingTimeString)"
     }
 }

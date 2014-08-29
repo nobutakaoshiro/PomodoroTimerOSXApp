@@ -39,8 +39,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mStatusBarItem.image = NSImage(named: "AppStatusBarIcon")
         mStatusBarItem.menu = statusBarMenu
     }
-    
-
 
 }
 
