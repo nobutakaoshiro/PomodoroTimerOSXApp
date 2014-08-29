@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8B3395A319B0297E0042429D /* PomodoroTimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3395A219B0297E0042429D /* PomodoroTimerModel.swift */; };
+		8B3395A619B043450042429D /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3395A419B043450042429D /* PreferencesWindowController.swift */; };
+		8B3395A719B043450042429D /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3395A519B043450042429D /* PreferencesWindowController.xib */; };
+		8B3395A919B043F40042429D /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3395A819B043F40042429D /* PreferencesWindow.swift */; };
 		8B7A792A19ADAC6B0025E147 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A792919ADAC6B0025E147 /* main.swift */; };
 		8B7A792C19ADAC6B0025E147 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A792B19ADAC6B0025E147 /* AppDelegate.swift */; };
 		8B7A792E19ADAC6B0025E147 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A792D19ADAC6B0025E147 /* Images.xcassets */; };
@@ -31,6 +34,9 @@
 		0CF75216115E4D069DEAD0C6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		1F80E8C082AB4DB7B8239A68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B3395A219B0297E0042429D /* PomodoroTimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroTimerModel.swift; sourceTree = "<group>"; };
+		8B3395A419B043450042429D /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		8B3395A519B043450042429D /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
+		8B3395A819B043F40042429D /* PreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
 		8B5E0C0119AEEB0E00AFD8B5 /* PomodoroTimer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PomodoroTimer-Bridging-Header.h"; sourceTree = "<group>"; };
 		8B7A792419ADAC6B0025E147 /* PomodoroTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodoroTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A792819ADAC6B0025E147 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,6 +107,9 @@
 				8B7A792D19ADAC6B0025E147 /* Images.xcassets */,
 				8B7A792F19ADAC6B0025E147 /* MainMenu.xib */,
 				8B7A797C19AE09D70025E147 /* PomodoroTimerWindow.swift */,
+				8B3395A419B043450042429D /* PreferencesWindowController.swift */,
+				8B3395A519B043450042429D /* PreferencesWindowController.xib */,
+				8B3395A819B043F40042429D /* PreferencesWindow.swift */,
 				8B7A792719ADAC6B0025E147 /* Supporting Files */,
 				8B5E0C0119AEEB0E00AFD8B5 /* PomodoroTimer-Bridging-Header.h */,
 			);
@@ -223,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3395A719B043450042429D /* PreferencesWindowController.xib in Resources */,
 				8B7A792E19ADAC6B0025E147 /* Images.xcassets in Resources */,
 				8B7A793119ADAC6B0025E147 /* MainMenu.xib in Resources */,
 			);
@@ -277,7 +287,9 @@
 			files = (
 				8B3395A319B0297E0042429D /* PomodoroTimerModel.swift in Sources */,
 				8B7A797D19AE09D70025E147 /* PomodoroTimerWindow.swift in Sources */,
+				8B3395A619B043450042429D /* PreferencesWindowController.swift in Sources */,
 				8B7A792C19ADAC6B0025E147 /* AppDelegate.swift in Sources */,
+				8B3395A919B043F40042429D /* PreferencesWindow.swift in Sources */,
 				8B7A792A19ADAC6B0025E147 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,6 +39,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mStatusBarItem.image = NSImage(named: "AppStatusBarIcon")
         mStatusBarItem.menu = statusBarMenu
     }
+    
+    @IBAction func showPreferencesWindow(sender: AnyObject) {
+        var sharedController = PreferencesWindowController.sharedInstance
+        sharedController.showWindow(sender)
+    }
 
 }
 
