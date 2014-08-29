@@ -20,6 +20,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     
     
     let _menuBarHeight = CGFloat(22.0)
+    let _menuBarThinModeHeight = CGFloat(3.0)
     var _progressBarHeight: CGFloat!
 //    var _progressBarHeight = CGFloat(14.0)
     
@@ -38,22 +39,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     
     let _windowLevel = 24
     
-    let _colors = [
-        "progress" : [128,128,255,128],
-        "progress2" : [13,159,203,128],
-//        "progress3" : [255,164,0,128],
-        "progress3" : [253,230,60,128],
-        "progress_few_left" : [255,0,0,128],
-        "progress_completed" : [128,255,128,128],
-    ]
-    
-    
-//    let _colors = [
-//        "progress" : [128,128,255,255],
-//        "progress_half" : [255,164,0,255],
-//        "progress_few_left" : [255,80,80,255],
-//        "progress_completed" : [60,200,60,255],
-//    ]
+    var _colors: NSDictionary!
     
     var isReverse: Bool {
         get {
@@ -65,6 +51,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
         super.awakeFromNib()
         
         _pomodoroTimerModel = PomodoroTimerModel.sharedInstance
+        _colors = _pomodoroTimerModel.colors
         
         setupView()
         initializeTimer()
@@ -79,7 +66,8 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
         _mainScreenRect = getMainScreenFrameRect()
         level = _windowLevel
         changeProgressBarColor()
-        _progressBarHeight = _menuBarHeight
+        
+        
     }
     
     
@@ -101,11 +89,13 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
         
         var progressBarWidth = CGFloat(timerProgress) * _mainScreenRect.size.width / CGFloat(maxCount)
         
+        var progressBarHeight = _pomodoroTimerModel.isThinMode ? _menuBarThinModeHeight : _menuBarHeight
+        
         if (isReverse) {
             progressBarWidth = _mainScreenRect.size.width - progressBarWidth
         }
         
-        var myScreenRect = NSMakeRect(0.0, _mainScreenRect.size.height - _menuBarHeight, progressBarWidth, _progressBarHeight)
+        var myScreenRect = NSMakeRect(0.0, _mainScreenRect.size.height - _menuBarHeight, progressBarWidth, progressBarHeight)
         self.setFrame(myScreenRect, display: true, animate: false)
         
         // Count Up (or Count Down) Timer
@@ -224,7 +214,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     }
     
     func colors(colorName: String) -> (NSColor) {
-        let rgba10:[Int] = _colors[colorName]!
+        let rgba10:[Int] = _colors[colorName] as [Int]
         let r = CGFloat(Float(rgba10[0]) / 255.0)
         let g = CGFloat(Float(rgba10[1]) / 255.0)
         let b = CGFloat(Float(rgba10[2]) / 255.0)

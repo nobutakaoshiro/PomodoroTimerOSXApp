@@ -23,8 +23,39 @@ class PomodoroTimerModel: NSObject {
     var reverseTimerMaxCount: Double = 20.0 // 300 seconds = 5 minitues
     var timeInterval: Double = 1.0 / 2.0
 
-    var isReverse = false
     var pomodoroTotalCount: Int = 0
+    var isReverse: Bool = false
+    var isThinMode: Bool = false
+    
+    
+    let defaultColors = [
+        "progress" : [128,128,255,128],
+        "progress2" : [13,159,203,128],
+        //        "progress3" : [255,164,0,128],
+        "progress3" : [253,230,60,128],
+        "progress_few_left" : [255,0,0,128],
+        "progress_completed" : [128,255,128,128],
+    ]
+    
+    let thinModeColors = [
+        "progress" : [128,128,255,255],
+        "progress2" : [13,159,203,255],
+        "progress3" : [255,164,0,255],
+        "progress_few_left" : [255,80,80,255],
+        "progress_completed" : [60,200,60,255],
+    ]
+
+    
+    var colors: NSDictionary {
+        get {
+            if (isThinMode) {
+                return thinModeColors
+            } else {
+                return defaultColors
+            }
+        }
+    }
+    
 
     var maxCount: Double {
         get {

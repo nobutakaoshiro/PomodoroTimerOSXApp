@@ -8,6 +8,8 @@
             <connections>
                 <outlet property="advancedView" destination="BuD-EI-VPe" id="6QO-Hx-Go2"/>
                 <outlet property="generalView" destination="Taw-Pb-Zik" id="3gT-MP-ETX"/>
+                <outlet property="maxCountReverseTextField" destination="13i-yA-oRH" id="Mmo-SL-HN7"/>
+                <outlet property="maxCountTextField" destination="xJL-Fk-zQZ" id="gFs-0n-4DC"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -44,22 +46,66 @@
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
         </window>
-        <customView id="Taw-Pb-Zik">
+        <customView id="Taw-Pb-Zik" userLabel="Preferences General View">
             <rect key="frame" x="0.0" y="0.0" width="307" height="239"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dsz-aX-abI">
-                    <rect key="frame" x="90" y="145" width="53" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="General" id="dJw-Z3-Idi">
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YF0-d0-ZBE">
+                    <rect key="frame" x="18" y="203" width="134" height="18"/>
+                    <buttonCell key="cell" type="check" title="Enable Thin Mode" bezelStyle="regularSquare" imagePosition="left" inset="2" id="wtB-ih-cGg">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleThinMode:" target="-2" id="FKE-x9-Ysg"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJL-Fk-zQZ">
+                    <rect key="frame" x="20" y="138" width="96" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Iod-8w-OKf">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13i-yA-oRH">
+                    <rect key="frame" x="131" y="138" width="96" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xy0-Vo-TZU">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Fc-wQ-58B">
+                    <rect key="frame" x="18" y="168" width="69" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="maxCount" id="gnM-Pa-L4X">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g36-BD-J2j">
+                    <rect key="frame" x="129" y="168" width="123" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="maxCount(reverse)" id="1Qy-Q0-5hb">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h4s-fK-cwW">
+                    <rect key="frame" x="233" y="132" width="69" height="32"/>
+                    <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vc5-vK-9Ac">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <action selector="saveMaxCount:" target="-2" id="Ajl-w0-gSA"/>
+                        </connections>
+                    </buttonCell>
+                </button>
             </subviews>
             <point key="canvasLocation" x="165.5" y="674.5"/>
         </customView>
-        <customView id="BuD-EI-VPe">
+        <customView id="BuD-EI-VPe" userLabel="Preferences Advanced View">
             <rect key="frame" x="0.0" y="0.0" width="264" height="177"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>

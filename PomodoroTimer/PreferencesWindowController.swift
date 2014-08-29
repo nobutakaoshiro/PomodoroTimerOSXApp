@@ -12,9 +12,12 @@ class PreferencesWindowController: NSWindowController {
     
     let viewTypeGeneral = 100
     let viewTypeAdvanced = 101
+    var _pomodoroTimerModel: PomodoroTimerModel!
     
     @IBOutlet weak var generalView: NSView!
     @IBOutlet weak var advancedView: NSView!
+    @IBOutlet weak var maxCountTextField: NSTextField!
+    @IBOutlet weak var maxCountReverseTextField: NSTextField!
     
     class var sharedInstance: PreferencesWindowController {
         struct Singleton {
@@ -27,6 +30,8 @@ class PreferencesWindowController: NSWindowController {
         super.windowDidLoad()
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        _pomodoroTimerModel = PomodoroTimerModel.sharedInstance
+        loadMaxCount()
         
         var toolbar = window.toolbar
         var toolbarItems = toolbar.items
@@ -67,6 +72,38 @@ class PreferencesWindowController: NSWindowController {
         window.setFrame(newWindowFrame, display: true, animate: true)
         
         contentView.addSubview(newView)
+    }
+    
+    @IBAction func toggleThinMode(sender: AnyObject) {
+        let checkbox = sender as NSButton
         
+        switch checkbox.state {
+        case 0:
+            _pomodoroTimerModel.isThinMode = false
+        case 1:
+            _pomodoroTimerModel.isThinMode = true
+        default:
+            _pomodoroTimerModel.isThinMode = false
+        }
+        
+        println("Thin Mode: \(_pomodoroTimerModel.isThinMode)")
+    }
+    
+    @IBAction func saveMaxCount(sender: AnyObject) {
+        
+        var maxCount = maxCountTextField.doubleValue
+        var maxCountReverse = maxCountReverseTextField.doubleValue
+        
+        saveMaxCount(maxCount, reverseTimerMaxCount: maxCountReverse)
+    }
+    
+    func saveMaxCount(timerMaxCount: Double, reverseTimerMaxCount: Double) {
+        _pomodoroTimerModel.timerMaxCount = timerMaxCount
+        _pomodoroTimerModel.reverseTimerMaxCount = reverseTimerMaxCount
+    }
+    
+    func loadMaxCount() {
+        maxCountTextField.doubleValue = _pomodoroTimerModel.timerMaxCount
+        maxCountReverseTextField.doubleValue = _pomodoroTimerModel.reverseTimerMaxCount
     }
 }
