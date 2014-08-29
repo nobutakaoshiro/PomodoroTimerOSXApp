@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B3395A319B0297E0042429D /* PomodoroTimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3395A219B0297E0042429D /* PomodoroTimerModel.swift */; };
 		8B7A792A19ADAC6B0025E147 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A792919ADAC6B0025E147 /* main.swift */; };
 		8B7A792C19ADAC6B0025E147 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A792B19ADAC6B0025E147 /* AppDelegate.swift */; };
 		8B7A792E19ADAC6B0025E147 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A792D19ADAC6B0025E147 /* Images.xcassets */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		0CF75216115E4D069DEAD0C6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		1F80E8C082AB4DB7B8239A68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B3395A219B0297E0042429D /* PomodoroTimerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PomodoroTimerModel.swift; sourceTree = "<group>"; };
 		8B5E0C0119AEEB0E00AFD8B5 /* PomodoroTimer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PomodoroTimer-Bridging-Header.h"; sourceTree = "<group>"; };
 		8B7A792419ADAC6B0025E147 /* PomodoroTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodoroTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A792819ADAC6B0025E147 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		8B7A794919AE020C0025E147 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8B3395A219B0297E0042429D /* PomodoroTimerModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3395A319B0297E0042429D /* PomodoroTimerModel.swift in Sources */,
 				8B7A797D19AE09D70025E147 /* PomodoroTimerWindow.swift in Sources */,
 				8B7A792C19ADAC6B0025E147 /* AppDelegate.swift in Sources */,
 				8B7A792A19ADAC6B0025E147 /* main.swift in Sources */,

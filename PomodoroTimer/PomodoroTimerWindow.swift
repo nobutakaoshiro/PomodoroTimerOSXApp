@@ -8,15 +8,15 @@
 
 import Cocoa
 
-class PomodoroTimerWindow: NSWindow {
+class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     
-    var _timerCount = 0.0
-    var _timerMaxCount = 20.0 // 1500 seconds = 25 minutes
+    var _timerProgress = 0.0
+    var _timerMaxCount = 1500.0 // 1500 seconds = 25 minutes
     var _timeInterval = 1.0 / 10.0
     var _isReverse = false
-    var _reverseTimerMaxCount = 10.0 // 300 seconds = 5 minitues
+    var _reverseTimerMaxCount = 300.0 // 300 seconds = 5 minitues
     
-    var _pomodoroTotalCount = 0
+    var _pomodoroTotalCount: Int = 0
     
     let _menuBarHeight = CGFloat(22.0)
     var _progressBarHeight: CGFloat!
@@ -34,12 +34,17 @@ class PomodoroTimerWindow: NSWindow {
     var _pomodoroTimer: NSTimer!
     var _mainScreenRect: NSRect!
     
+    let _windowLevel = 24
+    
     let _colors = [
         "progress" : [128,128,255,128],
-        "progress_half" : [255,164,0,128],
+        "progress2" : [13,159,203,128],
+//        "progress3" : [255,164,0,128],
+        "progress3" : [253,230,60,128],
         "progress_few_left" : [255,0,0,128],
         "progress_completed" : [128,255,128,128],
     ]
+    
     
 //    let _colors = [
 //        "progress" : [128,128,255,255],
@@ -50,46 +55,30 @@ class PomodoroTimerWindow: NSWindow {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        println("awakeFromNib()")
         
         setupView()
         initializeTimer()
         showProgressBar()
+        startTimer()
     }
     
     func setupView() {
         opaque = false // 透過ON
         ignoresMouseEvents = true
         collectionBehavior = NSWindowCollectionBehavior.CanJoinAllSpaces
-
         _mainScreenRect = getMainScreenFrameRect()
-        
-        println("level: \(level)")
-        
-        level = 24
-        
-        println("level: \(level)")
+        level = _windowLevel
         changeProgressBarColor()
-        
         _progressBarHeight = _menuBarHeight
     }
     
     
-//    func drawRect() {
-//        showProgressBar()
-////        println("draw count:\(_timerCount)")
-//
-//    }
     
     func getMainScreenFrameRect() -> (NSRect) {
-
         var screenRect: NSRect!
-        
         for (index, screen) in enumerate(NSScreen.screens()) {
             screenRect = screen.frame
-            
             NSLog("[%d]: %@, %@", index, screenRect.width, screenRect.height)
-
         }
         return screenRect
     }
@@ -100,35 +89,31 @@ class PomodoroTimerWindow: NSWindow {
         
         var timerMaxCount = _isReverse ? _reverseTimerMaxCount : _timerMaxCount
         
-        var progressBarWidth = CGFloat(_timerCount) * _mainScreenRect.size.width / CGFloat(timerMaxCount)
-        
+        var progressBarWidth = CGFloat(_timerProgress) * _mainScreenRect.size.width / CGFloat(timerMaxCount)
         if (_isReverse) {
             progressBarWidth = _mainScreenRect.size.width - progressBarWidth
         }
         
         var myScreenRect = NSMakeRect(0.0, _mainScreenRect.size.height - _menuBarHeight, progressBarWidth, _progressBarHeight)
-        
         self.setFrame(myScreenRect, display: true, animate: false)
         
         var countInterval = _timeInterval * _timerMaxCount / timerMaxCount
-
-//        println("timer count: \(_timerCount)")
         
         // Count Up (or Count Down) Timer
-        _timerCount += countInterval
-        
-        if (_isReverse) {
-            if (_timerCount > _reverseTimerMaxCount) {
+        _timerProgress += countInterval
+
+        if (_timerProgress > timerMaxCount) {
+            _timerProgress = 0.0
+
+            if (_isReverse) {
                 _isReverse = false
-                _timerCount = 0
                 playSound("Submarine")
-            }
-        } else {
-            if (_timerCount > _timerMaxCount) {
+            } else {
                 _isReverse = true
-                _timerCount = 0
                 _pomodoroTotalCount += 1
+                println("Pomodoro: \(_pomodoroTotalCount)")
                 playSound("Hero")
+                sendNotification("PomodoroTimer", subtitle:"Finished!", body:"Total Pomodoro: \(_pomodoroTotalCount)")
             }
         }
     }
@@ -139,7 +124,7 @@ class PomodoroTimerWindow: NSWindow {
         
         var timerMaxCount = _isReverse ? _reverseTimerMaxCount : _timerMaxCount
         
-        var percent = Int(_timerCount * 100.0 / timerMaxCount)
+        var percent = Int(_timerProgress * 100.0 / timerMaxCount)
 
 //        if (_isReverse) {
 //            percent = (100 - percent)
@@ -147,12 +132,14 @@ class PomodoroTimerWindow: NSWindow {
 //        
 //        println("percent: \(percent)")
 
-        if (percent <= 0) {
+        if (percent < 0) {
             backgroundColor = colors("progress_completed")
-        } else if (percent < 50) {
+        } else if (percent < 30) {
             backgroundColor = colors("progress")
-        } else if (percent < 85){
-            backgroundColor = colors("progress_half")
+        } else if (percent < 60) {
+            backgroundColor = colors("progress2")
+        } else if (percent < 90){
+            backgroundColor = colors("progress3")
         } else if (percent < 100){
             backgroundColor = colors("progress_few_left")
         } else if (percent >= 100){
@@ -185,7 +172,7 @@ class PomodoroTimerWindow: NSWindow {
 
         _mainScreenRect = getMainScreenFrameRect()
         _pomodoroTimer = NSTimer(timeInterval: _timeInterval, target: self, selector: Selector("showProgressBar"), userInfo: false, repeats: true)
-//        _timerCount = 0.0
+//        _timerProgress = 0.0
     }
     
     func startTimer() {
@@ -216,7 +203,8 @@ class PomodoroTimerWindow: NSWindow {
     }
     
     func resetTimer() {
-        _timerCount = 0.0
+        _timerProgress = 0.0
+        _pomodoroTotalCount = 0
         showProgressBar()
     }
     
@@ -280,5 +268,17 @@ class PomodoroTimerWindow: NSWindow {
         if (!sound.playing) {
             sound.play()
         }
+    }
+    
+    func sendNotification(title: NSString, subtitle: NSString, body: NSString) {
+        var userNotification = NSUserNotification()
+        userNotification.title = title
+        userNotification.subtitle = subtitle
+        userNotification.informativeText = body
+        
+        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(userNotification)
+        
+        println("sended Notification!")
+        
     }
 }
