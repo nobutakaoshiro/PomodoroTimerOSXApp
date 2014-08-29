@@ -11,9 +11,12 @@ import Cocoa
 class PomodoroTimerWindow: NSWindow {
     
     var _timerCount = 0.0
-    var _timerMaxCount = 1500.0 // 1500 seconds = 25 minutes
-    var _timeInterval = 1.0 / 2.0
-    var _reverseCount = false
+    var _timerMaxCount = 20.0 // 1500 seconds = 25 minutes
+    var _timeInterval = 1.0 / 10.0
+    var _isReverse = false
+    var _reverseTimerMaxCount = 10.0 // 300 seconds = 5 minitues
+    
+    var _pomodoroTotalCount = 0
     
     let _menuBarHeight = CGFloat(22.0)
     var _progressBarHeight: CGFloat!
@@ -92,47 +95,63 @@ class PomodoroTimerWindow: NSWindow {
     }
     
     
-    
     func showProgressBar() {
         changeProgressBarColor()
         
-        var progressBarWidth = CGFloat(_timerCount) * _mainScreenRect.size.width / CGFloat(_timerMaxCount)
+        var timerMaxCount = _isReverse ? _reverseTimerMaxCount : _timerMaxCount
         
-//        var myScreenRect = NSMakeRect(0.0, _mainScreenRect.size.height - menuBarHeight, progressWidth, menuBarHeight)
-//        let progressHeight = menuBarHeight
+        var progressBarWidth = CGFloat(_timerCount) * _mainScreenRect.size.width / CGFloat(timerMaxCount)
+        
+        if (_isReverse) {
+            progressBarWidth = _mainScreenRect.size.width - progressBarWidth
+        }
         
         var myScreenRect = NSMakeRect(0.0, _mainScreenRect.size.height - _menuBarHeight, progressBarWidth, _progressBarHeight)
         
         self.setFrame(myScreenRect, display: true, animate: false)
         
-        if (_reverseCount) {
-            _timerCount -= _timeInterval
-            
-            if (_timerCount < 0) {
-                _reverseCount = false
+        var countInterval = _timeInterval * _timerMaxCount / timerMaxCount
+
+//        println("timer count: \(_timerCount)")
+        
+        // Count Up (or Count Down) Timer
+        _timerCount += countInterval
+        
+        if (_isReverse) {
+            if (_timerCount > _reverseTimerMaxCount) {
+                _isReverse = false
+                _timerCount = 0
+                playSound("Submarine")
             }
         } else {
-            _timerCount += _timeInterval
-
             if (_timerCount > _timerMaxCount) {
-                _reverseCount = true
+                _isReverse = true
+                _timerCount = 0
+                _pomodoroTotalCount += 1
+                playSound("Hero")
             }
-
         }
     }
+
+    
     
     func changeProgressBarColor() {
-        var percent = Int(_timerCount * 100.0 / _timerMaxCount)
         
-        if (_reverseCount) {
-            percent = (100 - percent)
-        }
+        var timerMaxCount = _isReverse ? _reverseTimerMaxCount : _timerMaxCount
         
+        var percent = Int(_timerCount * 100.0 / timerMaxCount)
+
+//        if (_isReverse) {
+//            percent = (100 - percent)
+//        }
+//        
 //        println("percent: \(percent)")
-        
-        if (percent < 50) {
+
+        if (percent <= 0) {
+            backgroundColor = colors("progress_completed")
+        } else if (percent < 50) {
             backgroundColor = colors("progress")
-        } else if (percent < 80){
+        } else if (percent < 85){
             backgroundColor = colors("progress_half")
         } else if (percent < 100){
             backgroundColor = colors("progress_few_left")
@@ -183,6 +202,7 @@ class PomodoroTimerWindow: NSWindow {
             startMenuItem.hidden = true
             pauseMenuItem.hidden = false
             stopMenuItem.hidden = false
+            resetMenuItem.hidden = false
             timerTextMenuItem.hidden = false
             timerSeparatorMenuItem.hidden = false
         }
@@ -190,12 +210,14 @@ class PomodoroTimerWindow: NSWindow {
     
     func stopTimer() {
         resetTimer()
-        showProgressBar()
         pauseTimer()
+        stopMenuItem.hidden = true
+        resetMenuItem.hidden = true
     }
     
     func resetTimer() {
         _timerCount = 0.0
+        showProgressBar()
     }
     
     @IBAction func pauseTimer(sender: AnyObject) {
@@ -203,10 +225,9 @@ class PomodoroTimerWindow: NSWindow {
     }
     
     func pauseTimer() {
-        if (_pomodoroTimer.valid) {
+        if (_pomodoroTimer != nil && _pomodoroTimer.valid) {
             _pomodoroTimer.invalidate()
             
-            stopMenuItem.hidden = true
             pauseMenuItem.hidden = true
             startMenuItem.hidden = false
             timerTextMenuItem.hidden = true
@@ -253,5 +274,11 @@ class PomodoroTimerWindow: NSWindow {
         return color
     }
     
-    
+    func playSound(soundName: NSString) {
+//        var sound = NSSound(contentsOfFile: "", byReference: true)
+        var sound = NSSound(named: soundName)
+        if (!sound.playing) {
+            sound.play()
+        }
+    }
 }

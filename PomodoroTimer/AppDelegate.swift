@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        let statusBarItemLength = NSVariableStatusItemLength
         mStatusBarItem = systemStatusBar.statusItemWithLength(-1) // -1 means "NSVariableStatusItemLength"
         mStatusBarItem.highlightMode = true
-        mStatusBarItem.title = ""
+//        mStatusBarItem.title = ""
         mStatusBarItem.image = NSImage(named: "AppStatusBarIcon")
         mStatusBarItem.menu = statusBarMenu
     }
