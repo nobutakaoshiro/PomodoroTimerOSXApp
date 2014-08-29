@@ -10,6 +10,7 @@
                 <outlet property="generalView" destination="Taw-Pb-Zik" id="3gT-MP-ETX"/>
                 <outlet property="maxCountReverseTextField" destination="13i-yA-oRH" id="Mmo-SL-HN7"/>
                 <outlet property="maxCountTextField" destination="xJL-Fk-zQZ" id="gFs-0n-4DC"/>
+                <outlet property="popupButton" destination="qX9-br-ApQ" id="Iam-9z-ntm"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -102,6 +103,34 @@
                         </connections>
                     </buttonCell>
                 </button>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qX9-br-ApQ">
+                    <rect key="frame" x="18" y="55" width="100" height="26"/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="MQa-o1-DfS">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="liW-uQ-Nqm">
+                            <items>
+                                <menuItem title="Low" tag="2" id="9pr-PY-XrD"/>
+                                <menuItem title="Middle" tag="15" id="f6a-om-2uW"/>
+                                <menuItem title="High" tag="30" id="lL6-jV-g6O"/>
+                                <menuItem title="Very High" tag="60" id="EM4-yl-zHn">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="changePerformance:" target="-2" id="fdZ-xj-yTd"/>
+                    </connections>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wx3-DO-r9m">
+                    <rect key="frame" x="20" y="87" width="84" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Performance" id="IGn-55-PxW">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="165.5" y="674.5"/>
         </customView>

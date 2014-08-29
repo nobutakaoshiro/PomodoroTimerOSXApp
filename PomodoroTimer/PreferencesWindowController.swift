@@ -19,6 +19,8 @@ class PreferencesWindowController: NSWindowController {
     @IBOutlet weak var maxCountTextField: NSTextField!
     @IBOutlet weak var maxCountReverseTextField: NSTextField!
     
+    @IBOutlet weak var popupButton: NSPopUpButton!
+    
     class var sharedInstance: PreferencesWindowController {
         struct Singleton {
             static let instance : PreferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindowController")
@@ -105,5 +107,12 @@ class PreferencesWindowController: NSWindowController {
     func loadMaxCount() {
         maxCountTextField.doubleValue = _pomodoroTimerModel.timerMaxCount
         maxCountReverseTextField.doubleValue = _pomodoroTimerModel.reverseTimerMaxCount
+    }
+    
+    @IBAction func changePerformance(sender: AnyObject) {
+        var popup = sender as NSPopUpButton
+        var interval = 1.0 / Double(popup.selectedItem.tag)
+        
+        _pomodoroTimerModel.timeInterval = interval
     }
 }
