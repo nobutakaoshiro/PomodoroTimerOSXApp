@@ -19,9 +19,9 @@ class PomodoroTimerModel: NSObject {
     }
     
     var timerProgress: Double = 0.0
-    var timerMaxCount: Double = 30.0 // 1500 seconds = 25 minutes
-    var reverseTimerMaxCount: Double = 15.0 // 300 seconds = 5 minitues
-    var timeInterval: Double = 1.0 / 25.0
+    var timerMaxCount: Double = 1500.0 // 1500 seconds = 25 minutes
+    var reverseTimerMaxCount: Double = 300.0 // 300 seconds = 5 minitues
+    var timeInterval: Double = 1.0 / 2.0
 
     var pomodoroTotalCount: Int = 0
     var isReverse: Bool = false

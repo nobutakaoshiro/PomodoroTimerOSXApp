@@ -711,6 +711,13 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="CRf-3x-XAb"/>
+                <menuItem title="Preferences..." id="aeJ-7X-KVp">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showPreferencesWindow:" target="Voe-Tx-rLC" id="3ES-E2-Pbc"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="PK6-eG-7xd"/>
                 <menuItem title="Quit" id="fkG-cK-CuH">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
