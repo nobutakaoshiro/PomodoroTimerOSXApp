@@ -73,10 +73,11 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     
     func getMainScreenFrameRect() -> (NSRect) {
         var screenRect: NSRect!
-        for (index, screen) in enumerate(NSScreen.screens()) {
-            screenRect = screen.frame
-            NSLog("[%d]: %@, %@", index, screenRect.width, screenRect.height)
-        }
+        screenRect = NSScreen.screens()[0].frame
+//        for (index, screen) in enumerate(NSScreen.screens()) {
+//            screenRect = screen.frame
+//            NSLog("[%d]: %@, %@", index, screenRect.width, screenRect.height)
+//        }
         return screenRect
     }
     
