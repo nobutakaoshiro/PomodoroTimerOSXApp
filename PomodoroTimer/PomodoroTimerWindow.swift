@@ -73,7 +73,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     
     func getMainScreenFrameRect() -> (NSRect) {
         var screenRect: NSRect!
-        screenRect = NSScreen.screens()[0].frame
+        screenRect = NSScreen.screens()![0].frame
 //        for (index, screen) in enumerate(NSScreen.screens()) {
 //            screenRect = screen.frame
 //            NSLog("[%d]: %@, %@", index, screenRect.width, screenRect.height)
@@ -110,7 +110,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
             } else {
                 _pomodoroTimerModel.isReverse = true
                 _pomodoroTimerModel.pomodoroTotalCount += 1
-                println("Pomodoro: \(_pomodoroTimerModel.pomodoroTotalCount)")
+                print("Pomodoro: \(_pomodoroTimerModel.pomodoroTotalCount)")
                 playSound("Hero")
                 sendNotification("PomodoroTimer", subtitle:"Finished!", body:"Total Pomodoro: \(_pomodoroTimerModel.pomodoroTotalCount)")
             }
@@ -143,23 +143,23 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     }
     
     @IBAction func startTimer(sender: AnyObject) {
-        println("startTimer!")
+        print("startTimer!")
         startTimer()
     }
     
     @IBAction func stopTimer(sender: AnyObject) {
-        println("stopTimer!")
+        print("stopTimer!")
         stopTimer()
     }
     
     @IBAction func resetTimer(sender: AnyObject) {
-        println("resetTimer!")
+        print("resetTimer!")
         resetTimer()
     }
     
     @IBAction func setGoal(sender: AnyObject) {
-        println("setGoal!")
-        setGoal("ゴールを設定！")
+        print("setGoal!")
+        setGoalStr("ゴールを設定！")
     }
     
     func initializeTimer() {
@@ -215,7 +215,7 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     }
     
     func colors(colorName: String) -> (NSColor) {
-        let rgba10:[Int] = _colors[colorName] as [Int]
+        let rgba10:[Int] = _colors[colorName] as! [Int]
         let r = CGFloat(Float(rgba10[0]) / 255.0)
         let g = CGFloat(Float(rgba10[1]) / 255.0)
         let b = CGFloat(Float(rgba10[2]) / 255.0)
@@ -227,26 +227,26 @@ class PomodoroTimerWindow: NSWindow, NSUserNotificationCenterDelegate {
     
     func playSound(soundName: NSString) {
 //        var sound = NSSound(contentsOfFile: "", byReference: true)
-        var sound = NSSound(named: soundName)
-        if (!sound.playing) {
-            sound.play()
+        var sound = NSSound(named: soundName as String)
+        if (!sound!.playing) {
+            sound!.play()
         }
     }
     
     func sendNotification(title: NSString, subtitle: NSString, body: NSString) {
         var userNotification = NSUserNotification()
-        userNotification.title = title
-        userNotification.subtitle = subtitle
-        userNotification.informativeText = body
+        userNotification.title = title as String
+        userNotification.subtitle = subtitle as String
+        userNotification.informativeText = body as String
         
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(userNotification)
         
-        println("sended Notification!")
+        print("sended Notification!")
         
     }
     
-    func setGoal(goalString: NSString) {
-        goalTextMenuItem.title = goalString
+    func setGoalStr(goalString: NSString) {
+        goalTextMenuItem.title = goalString as String
     }
     
     func updateTimerText() {
